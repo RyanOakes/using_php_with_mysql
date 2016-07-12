@@ -8,3 +8,12 @@ try {
 	echo "Couldn't connect to the database.";
 	exit;
 }
+
+try {
+		$results = $db->query("SELECT name, price, img FROM products ORDER BY sku ASC");
+} catch (Exception $e) {
+		echo "Data could not be received.";
+		exit;
+}
+
+$products = $results->fetchAll(PDO::FETCH_ASSOC);
